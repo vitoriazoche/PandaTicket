@@ -8,14 +8,13 @@ export const Modal = styled.div`
   position: relative;
   height: 300px;
   width: 500px;
-
-`
+`;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   padding: 0px 30px;
-`
+`;
 
 export const Close = styled.span`
   position: relative;
@@ -26,4 +25,4 @@ export const Close = styled.span`
   &:hover {
     color: grey;
   }
-`
+`;

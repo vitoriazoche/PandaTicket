@@ -8,8 +8,7 @@ export const Modal = styled.div`
   position: relative;
   height: 300px;
   width: 500px;
-`
-
+`;
 
 export const Close = styled.span`
   position: relative;
@@ -20,6 +19,6 @@ export const Close = styled.span`
   &:hover {
     color: grey;
   }
-`
+`;
 
 export default Modal;

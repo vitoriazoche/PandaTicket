@@ -1,32 +1,36 @@
 import React, { Component, Fragment } from 'react';
-import Novo from "./New/Novo";
-import Editar from './Edit/Editar';
 
-import { Header, Button, Image, Table, Thead, Tr} from './styles';
-import Logo from '../img/Logo.png'
+import Novo from './New';
+import Editar from './Edit';
+
+import Logo from '../img/Logo.png';
+import {
+  Header, Button, Image, Table, Thead, Tr,
+} from './styles';
 
 class Home extends Component {
-  state = { 
-    showNewTicket: true,
+  state = {
+    showNewTicket: false,
     showEditTicket: false,
-  }
+  };
 
-  toggleNewTicket = () => this.setState({showNewTicket: !this.state.showNewTicket})
+  toggleNewTicket = () => this.setState(...prevState => ({ showNewTicket: !prevState }));
 
-  toggleEditTicket = () => this.setState({showEditTicket: !this.state.showEditTicket})
+  toggleEditTicket = () => this.setState(...prevState => ({ showEditTicket: !prevState }));
 
-  render() { 
+  render() {
     const { showNewTicket, showEditTicket } = this.state;
+    console.log(showNewTicket);
     return (
       <Fragment>
-        <Novo isVisible={showNewTicket} onClose={this.toggleNewTicket}/>
-        <Editar isVisible={showEditTicket} onClose={this.toggleEditTicket}/>
-        
+        <Novo isVisible={showNewTicket} onClose={this.toggleNewTicket} />
+        <Editar isVisible={showEditTicket} onClose={this.toggleEditTicket} />
+
         <Header>
           <Image src={Logo} />
           <Button onClick={this.toggleNewTicket}>Abrir chamado</Button>
         </Header>
-        
+
         <Table>
           <Thead>
             <tr>
@@ -47,7 +51,7 @@ class Home extends Component {
               <td>Suporte</td>
               <td>Necessito de uma inserção de uma coluna no relatório ja existente</td>
               <td>29/10/2018</td>
-              <td>Analista suporte</td>      
+              <td>Analista suporte</td>
             </Tr>
             <Tr onClick={this.toggleEditTicket}>
               <td>Aberto</td>
@@ -56,7 +60,7 @@ class Home extends Component {
               <td>Benefícios</td>
               <td>Preciso da segunda via do cartão VR para o funcionario X até sexta</td>
               <td>30/10/2018</td>
-              <td>RH</td>      
+              <td>RH</td>
             </Tr>
             <Tr onClick={this.toggleEditTicket}>
               <td>Finalizado</td>
@@ -65,7 +69,7 @@ class Home extends Component {
               <td>Suporte</td>
               <td>Preciso de um backup do banco Y pois excluido as tabelas :(</td>
               <td>02/10/2018</td>
-              <td>DBA</td>      
+              <td>DBA</td>
             </Tr>
           </tbody>
         </Table>
@@ -73,5 +77,5 @@ class Home extends Component {
     );
   }
 }
- 
+
 export default Home;

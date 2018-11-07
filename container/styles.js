@@ -1,9 +1,9 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 export const Button = styled.button`
   padding: 20px;
   margin: 20px;
@@ -16,17 +16,18 @@ export const Button = styled.button`
   background-color: #2ecc71;
   color: #fff;
   cursor: pointer;
-`
+`;
 
 export const Image = styled.img`
   width: 140px;
   height: 105px;
-`
+`;
 
 export const Table = styled.table`
   margin: 0 auto;
-  border-collapse: collapse; border-spacing: 0;
-`
+  border-collapse: collapse;
+  border-spacing: 0;
+`;
 
 export const Thead = styled.thead`
   text-align: center;
@@ -34,7 +35,7 @@ export const Thead = styled.thead`
   padding: 15px 10px;
   color: #fff;
   background-color: #879dc1;
-`
+`;
 
 export const Tr = styled.tr`
   cursor: pointer;
@@ -44,4 +45,4 @@ export const Tr = styled.tr`
   &:hover {
     background-color: #e8e8e8;
   }
-`
+`;
