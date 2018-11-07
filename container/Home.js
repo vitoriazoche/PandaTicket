@@ -14,9 +14,9 @@ class Home extends Component {
     showEditTicket: false,
   };
 
-  toggleNewTicket = () => this.setState(...prevState => ({ showNewTicket: !prevState }));
+  toggleNewTicket = () => this.setState(...prevState => ({ showNewTicket: !prevState.showNewTicket }));
 
-  toggleEditTicket = () => this.setState(...prevState => ({ showEditTicket: !prevState }));
+  toggleEditTicket = () => this.setState(...prevState => ({ showEditTicket: !prevState.showEditTicket }));
 
   render() {
     const { showNewTicket, showEditTicket } = this.state;
