@@ -3,7 +3,7 @@ import Novo from "./New/Novo";
 import Editar from './Edit/Editar';
 
 import { Header, Button, Image, Table, Thead, Tr} from './styles';
-import Logo from './img/Logo.png'
+import Logo from '../img/Logo.png'
 
 class Home extends Component {
   state = { 
