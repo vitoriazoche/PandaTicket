@@ -12,23 +12,62 @@ class Home extends Component {
   state = {
     showNewTicket: false,
     showEditTicket: false,
+    target: {},
+    data: [
+      {
+        status: 'Finalizado',
+        id: 1,
+        name: 'Solicitação de VT',
+        category: 'Beneficios',
+        description: 'Preciso da segunda via do cartão VR para o funcionario X até sexta',
+        requester: 'João',
+        openningDate: '10/10/2018',
+        owner: 'RH',
+      },
+      {
+        status: 'Aberto',
+        id: 2,
+        name: 'Solicitação de VR',
+        category: 'Beneficios',
+        description: 'Preciso da segunda via do cartão VR para o funcionario X até sexta',
+        requester: 'Maria',
+        openningDate: '30/10/2018',
+        owner: 'RH',
+      },
+      {
+        status: 'Finalizado',
+        id: 3,
+        name: 'Backup do banco Y',
+        category: 'Suporte',
+        description: 'Preciso de um backup do banco Y pois excluido as tabelas',
+        requester: 'Roberto',
+        openningDate: '05/02/2018',
+        owner: 'DBA',
+      },
+    ],
   };
 
-  toggleNewTicket = () => this.setState(...prevState => ({ showNewTicket: !prevState.showNewTicket }));
+  toggleNew = () => this.setState(prevState => ({ showNewTicket: !prevState.showNewTicket }));
 
-  toggleEditTicket = () => this.setState(...prevState => ({ showEditTicket: !prevState.showEditTicket }));
+  toggleEdit = () => this.setState(prevState => ({ showEditTicket: !prevState.showEditTicket }));
+
+  renderEdit = (item) => {
+    this.setState(prevState => ({ showEditTicket: !prevState.showEditTicket, target: item }));
+  };
 
   render() {
-    const { showNewTicket, showEditTicket } = this.state;
-    console.log(showNewTicket);
+    const {
+      showNewTicket, showEditTicket, data, target,
+    } = this.state;
+
     return (
       <Fragment>
-        <Novo isVisible={showNewTicket} onClose={this.toggleNewTicket} />
-        <Editar isVisible={showEditTicket} onClose={this.toggleEditTicket} />
+        <Novo isVisible={showNewTicket} onClose={this.toggleNew} />
+        <Editar isVisible={showEditTicket} onClose={this.toggleEdit} target={target} />
 
         <Header>
           <Image src={Logo} />
-          <Button onClick={this.toggleNewTicket}>Abrir chamado</Button>
+          <Button onClick={this.toggleNew}>Abrir chamado</Button>
         </Header>
 
         <Table>
@@ -39,38 +78,24 @@ class Home extends Component {
               <th>Nome</th>
               <th>Categoria</th>
               <th>Descrição</th>
+              <th>Solicitante</th>
               <th>Data abertura</th>
               <th>Responsável</th>
             </tr>
           </Thead>
           <tbody>
-            <Tr onClick={this.toggleEditTicket}>
-              <td>Aberto</td>
-              <td>1</td>
-              <td>Ajuste de relatório</td>
-              <td>Suporte</td>
-              <td>Necessito de uma inserção de uma coluna no relatório ja existente</td>
-              <td>29/10/2018</td>
-              <td>Analista suporte</td>
-            </Tr>
-            <Tr onClick={this.toggleEditTicket}>
-              <td>Aberto</td>
-              <td>2</td>
-              <td>Solicitação de VR</td>
-              <td>Benefícios</td>
-              <td>Preciso da segunda via do cartão VR para o funcionario X até sexta</td>
-              <td>30/10/2018</td>
-              <td>RH</td>
-            </Tr>
-            <Tr onClick={this.toggleEditTicket}>
-              <td>Finalizado</td>
-              <td>3</td>
-              <td>Backup do banco Y</td>
-              <td>Suporte</td>
-              <td>Preciso de um backup do banco Y pois excluido as tabelas :(</td>
-              <td>02/10/2018</td>
-              <td>DBA</td>
-            </Tr>
+            {data.map(item => (
+              <Tr key={item.id} onClick={() => this.renderEdit(item)}>
+                <td>{item.status}</td>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.category}</td>
+                <td>{item.description}</td>
+                <td>{item.requester}</td>
+                <td>{item.openningDate}</td>
+                <td>{item.owner}</td>
+              </Tr>
+            ))}
           </tbody>
         </Table>
       </Fragment>

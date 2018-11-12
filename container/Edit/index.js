@@ -5,13 +5,15 @@ import Overlay from '../../components/overlay';
 import { Modal, Close } from './styles';
 
 // eslint-disable-next-line react/prop-types
-const Edit = ({ isVisible, onClose }) => (
+const Edit = ({ isVisible, onClose, target }) => (
   <Overlay isVisible={isVisible}>
     <Modal>
       <Close onClick={onClose}>X</Close>
-      <h2>Nome do chamado</h2>
-      <span>Solicitante: Jonathan</span>
-      <span>Categoria: Email</span>
+      <h2>{target.name}</h2>
+      <span>{`Solicitante: ${target.requester}`}</span>
+      <span>{`Categoria: ${target.category}`}</span>
+      <div>{`Descrição: ${target.description}`}</div>
+      <span>Status: </span>
       <form>
         <br />
         <select>
@@ -20,6 +22,7 @@ const Edit = ({ isVisible, onClose }) => (
           <option>Em análise</option>
         </select>
       </form>
+      <button type="submit">Concluir</button>
     </Modal>
   </Overlay>
 );

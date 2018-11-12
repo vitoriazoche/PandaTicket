@@ -1,24 +1,24 @@
 {
   "funcionarios": [
-    { 
+    {
       "id": 1,
       "nome": "jonathan",
       "idade": 22
     },
-    { 
+    {
       "id": 2,
       "nome": "luciano",
       "idade": 22
     },
-    { 
+    {
       "id": 3,
       "nome": "vitoria",
       "idade": 22
     },
-    { 
+    {
       "id": 3,
       "nome": "vitoria",
       "idade": 22
-    }       
+    }
   ]
 }
