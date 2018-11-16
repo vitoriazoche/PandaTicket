@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import Novo from './New';
 import Editar from './Edit';
+import api from '../api';
 
 import Logo from '../img/Logo.png';
 import {
@@ -13,39 +14,18 @@ class Home extends Component {
     showNewTicket: false,
     showEditTicket: false,
     target: {},
-    data: [
-      {
-        status: 'Finalizado',
-        id: 1,
-        name: 'Solicitação de VT',
-        category: 'Beneficios',
-        description: 'Preciso da segunda via do cartão VR para o funcionario X até sexta',
-        requester: 'João',
-        openningDate: '10/10/2018',
-        owner: 'RH',
-      },
-      {
-        status: 'Aberto',
-        id: 2,
-        name: 'Solicitação de VR',
-        category: 'Beneficios',
-        description: 'Preciso da segunda via do cartão VR para o funcionario X até sexta',
-        requester: 'Maria',
-        openningDate: '30/10/2018',
-        owner: 'RH',
-      },
-      {
-        status: 'Finalizado',
-        id: 3,
-        name: 'Backup do banco Y',
-        category: 'Suporte',
-        description: 'Preciso de um backup do banco Y pois excluido as tabelas',
-        requester: 'Roberto',
-        openningDate: '05/02/2018',
-        owner: 'DBA',
-      },
-    ],
+    data: [],
   };
+
+  async componentDidMount() {
+    try {
+      api.getTickets().then((res) => {
+        this.setState({ data: res.data });
+      });
+    } catch (error) {
+      alert(`Fetch restaurant error: ${error}`);
+    }
+  }
 
   toggleNew = () => this.setState(prevState => ({ showNewTicket: !prevState.showNewTicket }));
 

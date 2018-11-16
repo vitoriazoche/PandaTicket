@@ -1,24 +1,34 @@
 {
-  "funcionarios": [
+  "tickets": [
     {
+      "status": "Finalizado",
       "id": 1,
-      "nome": "jonathan",
-      "idade": 22
+      "name": "Solicitação de VT",
+      "category": "Beneficios",
+      "description": "Preciso da segunda via do cartão VR para o funcionario X até sexta",
+      "requester": "João",
+      "openningDate": "10/10/2018",
+      "owner": "RH"
     },
     {
+      "status": "Aberto",
       "id": 2,
-      "nome": "luciano",
-      "idade": 22
+      "name": "Solicitação de VR",
+      "category": "Beneficios",
+      "description": "Preciso da segunda via do cartão VR para o funcionario X até sexta",
+      "requester": "Maria",
+      "openningDate": "30/10/2018",
+      "owner": "RH"
     },
     {
+      "status": "Finalizado",
       "id": 3,
-      "nome": "vitoria",
-      "idade": 22
-    },
-    {
-      "id": 3,
-      "nome": "vitoria",
-      "idade": 22
+      "name": "Backup do banco Y",
+      "category": "Suporte",
+      "description": "Preciso de um backup do banco Y pois excluido as tabelas",
+      "requester": "Roberto",
+      "openningDate": "05/02/2018",
+      "owner": "DBA"
     }
   ]
 }

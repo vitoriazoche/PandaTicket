@@ -19,7 +19,7 @@ const Novo = ({ isVisible, onClose }) => (
           <option>Infraestrutura</option>
           <option>Financeiro</option>
         </select>
-        <textarea placeholder="Mensagem" />
+        <textarea placeholder="Descrição" />
         <button type="submit">Novo Chamado</button>
       </Form>
     </Modal>
