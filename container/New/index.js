@@ -1,21 +1,46 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+import format from 'date-fns/format';
 
 import Overlay from '../../components/overlay';
+import api from '../../api';
 import { Modal, Form, Close } from './styles';
 
 class New extends Component {
   state = {
     ticket: {
       status: '',
-      id: 0,
       name: '',
       category: '',
       description: '',
       requester: '',
       openningDate: '',
-      owner: '',
     },
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const status = 'Em andamento';
+    const openningDate = format(new Date(), 'DD/MM/YYYY');
+    const requester = 'João';
+
+    this.setState(prevState => ({
+      ticket: {
+        ...prevState.ticket,
+        status,
+        openningDate,
+        requester,
+      },
+    }));
+
+    try {
+      // eslint-disable-next-line react/destructuring-assignment
+      api.newTicket(this.state.ticket).then((res) => {
+        alert(res.statusText);
+      });
+    } catch (error) {
+      alert('Erro ao abrir chamado');
+    }
   };
 
   handleChange = (e) => {
@@ -40,10 +65,23 @@ class New extends Component {
       <Overlay isVisible={isVisible}>
         <Modal>
           <Close onClick={onClose}>X</Close>
-          <Form method="post">
-            <input type="text" placeholder="Nome do Chamado" />
-            <input type="text" placeholder="Nome do Solicitante" />
-            <select>
+          <Form method="post" onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              placeholder="Nome do Chamado"
+              name="name"
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Nome do Solicitante"
+              name="requester"
+              onChange={this.handleChange}
+            />
+            <select onChange={this.handleChange} name="category">
+              <option disabled selected>
+                Escolha uma catregoria
+              </option>
               <option>Suporte</option>
               <option>E-mail</option>
               <option>Acesso</option>
@@ -51,8 +89,10 @@ class New extends Component {
               <option>Infraestrutura</option>
               <option>Financeiro</option>
             </select>
-            <textarea placeholder="Descrição" />
-            <button type="submit">Novo Chamado</button>
+            <textarea placeholder="Descrição" name="description" onChange={this.handleChange} />
+            <button type="submit" onClick={onClose}>
+              Novo Chamado
+            </button>
           </Form>
         </Modal>
       </Overlay>

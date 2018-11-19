@@ -60,7 +60,6 @@ class Home extends Component {
               <th>Descrição</th>
               <th>Solicitante</th>
               <th>Data abertura</th>
-              <th>Responsável</th>
             </tr>
           </Thead>
           <tbody>
@@ -73,7 +72,6 @@ class Home extends Component {
                 <td>{item.description}</td>
                 <td>{item.requester}</td>
                 <td>{item.openningDate}</td>
-                <td>{item.owner}</td>
               </Tr>
             ))}
           </tbody>

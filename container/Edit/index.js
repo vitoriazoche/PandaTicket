@@ -32,7 +32,7 @@ class Edit extends React.PureComponent {
 
   renderOptions = (status) => {
     const options = [
-      { value: 'in-service', option: 'Em andatmento', selected: false },
+      { value: 'in-service', option: 'Em andamento', selected: false },
       { value: 'finished', option: 'Finalizado', selected: false },
       { value: 'opened', option: 'Aberto', selected: false },
     ];
