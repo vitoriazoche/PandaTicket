@@ -2,10 +2,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import Overlay from '../../components/overlay';
+import Modal from '../../components/Modal';
 import api from '../../api';
-
-import { Modal, Close } from './styles';
 
 class Edit extends React.PureComponent {
   state = { status: '' };
@@ -47,25 +45,24 @@ class Edit extends React.PureComponent {
   };
 
   render() {
-    const { isVisible, onClose, target } = this.props;
+    const { onClose, isOpen, target } = this.props;
     return (
-      <Overlay isVisible={isVisible}>
-        <Modal>
-          <Close onClick={onClose}>X</Close>
-          <h2>{target.name}</h2>
-          <span>{`Solicitante: ${target.requester}`}</span>
-          <span>{`Categoria: ${target.category}`}</span>
-          <div>{`Descrição: ${target.description}`}</div>
-          <span>Status: </span>
-          <br />
-          <form onSubmit={this.handleSubmit} method="post">
-            <select onChange={this.handleChange}>{this.renderOptions(target.status)}</select>
-            <button type="submit">Concluir</button>
-          </form>
-        </Modal>
-      </Overlay>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <h2>{target.name}</h2>
+        <span>{`Solicitante: ${target.requester}`}</span>
+        <span>{`Categoria: ${target.category}`}</span>
+        <div>{`Descrição: ${target.description}`}</div>
+        <span>Status: </span>
+        <br />
+        <form onSubmit={this.handleSubmit} method="post">
+          <select onChange={this.handleChange}>{this.renderOptions(target.status)}</select>
+          <button type="submit" onClick={onClose}>
+            Concluir
+          </button>
+        </form>
+      </Modal>
     );
   }
 }
 
-export default Edit;
+export default Modal(Edit);

@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import format from 'date-fns/format';
 
-import Overlay from '../../components/overlay';
+import Modal from '../../components/Modal';
 import api from '../../api';
-import { Modal, Form, Close } from './styles';
+import { Form } from './styles';
 
 class New extends Component {
   state = {
@@ -60,42 +60,39 @@ class New extends Component {
   };
 
   render() {
-    const { isVisible, onClose } = this.props;
+    const { onClose, isOpen } = this.props;
     return (
-      <Overlay isVisible={isVisible}>
-        <Modal>
-          <Close onClick={onClose}>X</Close>
-          <Form method="post" onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              placeholder="Nome do Chamado"
-              name="name"
-              onChange={this.handleChange}
-            />
-            <input
-              type="text"
-              placeholder="Nome do Solicitante"
-              name="requester"
-              onChange={this.handleChange}
-            />
-            <select onChange={this.handleChange} name="category">
-              <option disabled selected>
-                Escolha uma catregoria
-              </option>
-              <option>Suporte</option>
-              <option>E-mail</option>
-              <option>Acesso</option>
-              <option>Beneficios</option>
-              <option>Infraestrutura</option>
-              <option>Financeiro</option>
-            </select>
-            <textarea placeholder="Descrição" name="description" onChange={this.handleChange} />
-            <button type="submit" onClick={onClose}>
-              Novo Chamado
-            </button>
-          </Form>
-        </Modal>
-      </Overlay>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <Form method="post" onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            placeholder="Nome do Chamado"
+            name="name"
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            placeholder="Nome do Solicitante"
+            name="requester"
+            onChange={this.handleChange}
+          />
+          <select onChange={this.handleChange} name="category">
+            <option disabled selected>
+              Escolha uma catregoria
+            </option>
+            <option>Suporte</option>
+            <option>E-mail</option>
+            <option>Acesso</option>
+            <option>Beneficios</option>
+            <option>Infraestrutura</option>
+            <option>Financeiro</option>
+          </select>
+          <textarea placeholder="Descrição" name="description" onChange={this.handleChange} />
+          <button type="submit" onClick={onClose}>
+            Novo Chamado
+          </button>
+        </Form>
+      </Modal>
     );
   }
 }

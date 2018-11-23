@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
-import Novo from './New';
-import Editar from './Edit';
+import New from './New';
+import Edit from './Edit';
 import api from '../api';
 
 import Logo from '../img/Logo.png';
@@ -31,24 +31,20 @@ class Home extends Component {
 
   toggleEdit = () => this.setState(prevState => ({ showEditTicket: !prevState.showEditTicket }));
 
-  renderEdit = (item) => {
-    this.setState(prevState => ({ showEditTicket: !prevState.showEditTicket, target: item }));
-  };
-
   render() {
     const {
-      showNewTicket, showEditTicket, data, target,
+      data, showNewTicket, showEditTicket, target,
     } = this.state;
 
     return (
       <Fragment>
-        <Novo isVisible={showNewTicket} onClose={this.toggleNew} />
-        <Editar isVisible={showEditTicket} onClose={this.toggleEdit} target={target} />
-
         <Header>
           <Image src={Logo} />
-          <Button onClick={this.toggleNew}>Abrir chamado</Button>
+          <Button onClick={() => this.renderNew()}>Abrir chamado</Button>
         </Header>
+
+        <New isOpen={showNewTicket} onClose={this.toggleNew} />
+        <Edit isOpen={showEditTicket} onClose={this.toggleEdit} target={target} />
 
         <Table>
           <Thead>
