@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -9,7 +10,6 @@ class Edit extends React.PureComponent {
   state = { status: '' };
 
   componentDidMount() {
-    // eslint-disable-next-line react/destructuring-assignment
     const { status } = this.props.target;
     this.setState({ status });
   }
@@ -28,11 +28,27 @@ class Edit extends React.PureComponent {
 
   handleChange = event => this.setState({ status: event.target.value });
 
+  // handleChange = (e) => {
+  //   e.persist();
+  //   this.setState((state) => {
+  //     const nextState = {
+  //       ...state,
+  //       ticket: {
+  //         ...state.ticket,
+  //         [e.target.name]: e.target.value,
+  //       },
+  //     };
+  //     return {
+  //       ...nextState,
+  //     };
+  //   });
+  // };
+
   renderOptions = (status) => {
     const options = [
+      { value: 'opened', option: 'Aberto', selected: false },
       { value: 'in-service', option: 'Em andamento', selected: false },
       { value: 'finished', option: 'Finalizado', selected: false },
-      { value: 'opened', option: 'Aberto', selected: false },
     ];
     return options.map((item) => {
       if (status === item.option) item.selected = true;
@@ -47,7 +63,7 @@ class Edit extends React.PureComponent {
   render() {
     const { onClose, isOpen, target } = this.props;
     return (
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} title="Editar chamado">
         <h2>{target.name}</h2>
         <span>{`Solicitante: ${target.requester}`}</span>
         <span>{`Categoria: ${target.category}`}</span>
@@ -65,4 +81,4 @@ class Edit extends React.PureComponent {
   }
 }
 
-export default Modal(Edit);
+export default Edit;

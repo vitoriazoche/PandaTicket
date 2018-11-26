@@ -31,6 +31,10 @@ class Home extends Component {
 
   toggleEdit = () => this.setState(prevState => ({ showEditTicket: !prevState.showEditTicket }));
 
+  renderEdit = (item) => {
+    this.setState(prevState => ({ showEditTicket: !prevState.showEditTicket, target: item }));
+  };
+
   render() {
     const {
       data, showNewTicket, showEditTicket, target,
@@ -40,7 +44,7 @@ class Home extends Component {
       <Fragment>
         <Header>
           <Image src={Logo} />
-          <Button onClick={() => this.renderNew()}>Abrir chamado</Button>
+          <Button onClick={this.toggleNew}>Abrir chamado</Button>
         </Header>
 
         <New isOpen={showNewTicket} onClose={this.toggleNew} />

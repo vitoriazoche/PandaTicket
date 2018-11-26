@@ -6,7 +6,7 @@ import {
 } from './styles';
 
 export default class Modal extends PureComponent {
-  toggle = () => this.setState(({ isVisible }) => ({ isVisible: !isVisible }));
+  toggle = () => this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
 
   render() {
     const {
@@ -14,9 +14,9 @@ export default class Modal extends PureComponent {
     } = this.props;
 
     return (
-      <Overlay isVisible={isOpen} onClick={this.toggle}>
+      <Overlay isVisible={isOpen}>
         <Wrapper>
-          <Close onClick={onClose} />
+          <Close onClick={onClose}>X</Close>
           <Title>{title}</Title>
           {children}
         </Wrapper>

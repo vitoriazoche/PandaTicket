@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import format from 'date-fns/format';
@@ -18,29 +19,25 @@ class New extends Component {
     },
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const status = 'Em andamento';
+  componentDidMount() {
+    const status = 'Aberto';
     const openningDate = format(new Date(), 'DD/MM/YYYY');
     const requester = 'João';
+    this.setState({ ticket: { status, openningDate, requester } });
+  }
 
-    this.setState(prevState => ({
-      ticket: {
-        ...prevState.ticket,
-        status,
-        openningDate,
-        requester,
-      },
-    }));
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { ticket } = this.state;
 
     try {
-      // eslint-disable-next-line react/destructuring-assignment
-      api.newTicket(this.state.ticket).then((res) => {
+      api.newTicket(ticket).then((res) => {
         alert(res.statusText);
       });
     } catch (error) {
       alert('Erro ao abrir chamado');
     }
+    window.location.reload();
   };
 
   handleChange = (e) => {
@@ -62,7 +59,7 @@ class New extends Component {
   render() {
     const { onClose, isOpen } = this.props;
     return (
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isOpen} onClose={onClose} title="Novo chamado">
         <Form method="post" onSubmit={this.handleSubmit}>
           <input
             type="text"
