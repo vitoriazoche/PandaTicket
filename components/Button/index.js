@@ -11,7 +11,7 @@ const Button = styled.button`
   background-color: #504fef;
   outline: none;
   transition: 1s;
-  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.75);
   display: block;
 
   &:hover {

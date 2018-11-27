@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import New from './New';
 import Edit from './Edit';
@@ -6,7 +6,7 @@ import api from '../api';
 
 import Logo from '../img/logo.png';
 import {
-  Header, Button, Image, Table, Thead, Tr,
+  Background, Header, Button, Image, Table,
 } from './styles';
 
 class Home extends Component {
@@ -41,7 +41,7 @@ class Home extends Component {
     } = this.state;
 
     return (
-      <Fragment>
+      <Background>
         <Header>
           <Image src={Logo} />
           <Button onClick={this.toggleNew}>Abrir chamado</Button>
@@ -51,7 +51,7 @@ class Home extends Component {
         <Edit isOpen={showEditTicket} onClose={this.toggleEdit} target={target} />
 
         <Table>
-          <Thead>
+          <thead>
             <tr>
               <th>Status</th>
               <th>ID</th>
@@ -61,10 +61,10 @@ class Home extends Component {
               <th>Solicitante</th>
               <th>Data abertura</th>
             </tr>
-          </Thead>
+          </thead>
           <tbody>
             {data.map(item => (
-              <Tr key={item.id} onClick={() => this.renderEdit(item)}>
+              <tr key={item.id} onClick={() => this.renderEdit(item)}>
                 <td>{item.status}</td>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
@@ -72,11 +72,11 @@ class Home extends Component {
                 <td>{item.description}</td>
                 <td>{item.requester}</td>
                 <td>{item.openningDate}</td>
-              </Tr>
+              </tr>
             ))}
           </tbody>
         </Table>
-      </Fragment>
+      </Background>
     );
   }
 }

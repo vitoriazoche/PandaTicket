@@ -67,7 +67,7 @@ class Edit extends React.PureComponent {
         <Status>Status: </Status>
         <Form method="post" onSubmit={this.handleSubmit}>
           <Select onChange={this.handleChange}>{this.renderOptions(target.status)}</Select>
-          <Button type="submit" onClick={onClose}>
+          <Button secondary type="submit" onClick={onClose}>
             Concluir
           </Button>
         </Form>

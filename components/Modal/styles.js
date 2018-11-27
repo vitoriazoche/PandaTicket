@@ -19,7 +19,7 @@ export const Close = styled.span`
   color: #999;
   padding: 10px 10px 0 0;
   cursor: pointer;
-  transition: .5s;
+  transition: 0.5s;
 
   &:hover {
     color: #504fef;
@@ -31,12 +31,12 @@ export const Title = styled.h2``;
 export const Wrapper = styled.div`
   position: relative;
   margin: 0 auto;
-  top: calc(50% - 150px);
+  top: calc(50% - 250px);
   background-color: #fff;
   position: relative;
   border-radius: 5px;
-  box-shadow: 0px 2px 22px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 2px 22px 0px rgba(0, 0, 0, 0.75);
   padding: 20px;
   height: auto;
-  width: 500px;
+  width: 45%;
 `;

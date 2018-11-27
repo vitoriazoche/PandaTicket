@@ -1,23 +1,16 @@
 import styled from 'styled-components';
 
+import ButtonComponent from '../components/Button';
+
+export const Background = styled.div`
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(rgba(12, 141, 173, 1), #533cb0);
+  height: 100vh;
+`;
+
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
-`;
-export const Button = styled.button`
-  padding: 20px;
-  margin: 30px;
-  height: 58px;
-  width: 200px;
-  font-weight: bold;
-  font-size: 18px;
-  border-radius: 10px;
-  border: none;
-  background-color: #0095ff;
-  color: #fff;
-  cursor: pointer;
-  border-color: #07c;
-  box-shadow: inset 0 1px 0 #66bfff;
 `;
 
 export const Image = styled.img`
@@ -27,17 +20,46 @@ export const Image = styled.img`
 `;
 
 export const Table = styled.table`
+  width: 90%;
   margin: 0 auto;
+  box-shadow: 0px 2px 22px 0px rgba(0, 0, 0, 0.75);
+  background-color: #fff;
+  border-radius: 5px;
   border-collapse: collapse;
   border-spacing: 0;
+
+  thead {
+    tr {
+      height: 60px;
+      background-color: #504fef;
+      text-align: center;
+      color: #fff;
+      cursor: initial;
+
+      &:hover {
+        background-color: #504fef;
+      }
+    }
+    }
+  }
+
+  td,
+  tr {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f1f3f4;
+    }
+  }
 `;
 
-export const Thead = styled.thead`
-  text-align: center;
-  font-weight: 100 !important;
-  padding: 15px 10px;
-  color: #fff;
-  background-color: #66bfff;
+export const Button = styled(ButtonComponent)`
+  margin: 38px;
+  font-size: 22px;
+  width: 200px;
 `;
 
 export const Tr = styled.tr`
