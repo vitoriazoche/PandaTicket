@@ -71,6 +71,30 @@
       "category": "Suporte",
       "description": "asdasd",
       "id": 8
+    },
+    {
+      "status": "Aberto",
+      "openningDate": "26/11/2018",
+      "requester": "erwerw",
+      "name": "react-ui",
+      "category": "Beneficios",
+      "description": "werwrwrwerwe",
+      "id": 9
+    },
+    {
+      "status": "Aberto",
+      "openningDate": "26/11/2018",
+      "requester": "asdasd",
+      "name": "asda",
+      "category": "E-mail",
+      "description": "adsada",
+      "id": 10
+    },
+    {
+      "status": "Aberto",
+      "openningDate": "27/11/2018",
+      "requester": "João",
+      "id": 11
     }
   ]
 }

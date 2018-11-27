@@ -4,8 +4,11 @@ import React, { Component } from 'react';
 import format from 'date-fns/format';
 
 import Modal from '../../components/Modal';
+import Input from '../../components/Input';
+import Button from '../../components/Button';
+import Select from '../../components/Select';
 import api from '../../api';
-import { Form } from './styles';
+import { Message, Form } from './styles';
 
 class New extends Component {
   state = {
@@ -61,19 +64,19 @@ class New extends Component {
     return (
       <Modal isOpen={isOpen} onClose={onClose} title="Novo chamado">
         <Form method="post" onSubmit={this.handleSubmit}>
-          <input
+          <Input
             type="text"
             placeholder="Nome do Chamado"
             name="name"
             onChange={this.handleChange}
           />
-          <input
+          <Input
             type="text"
             placeholder="Nome do Solicitante"
             name="requester"
             onChange={this.handleChange}
           />
-          <select onChange={this.handleChange} name="category">
+          <Select onChange={this.handleChange} name="category">
             <option disabled selected>
               Escolha uma catregoria
             </option>
@@ -83,11 +86,11 @@ class New extends Component {
             <option>Beneficios</option>
             <option>Infraestrutura</option>
             <option>Financeiro</option>
-          </select>
-          <textarea placeholder="Descrição" name="description" onChange={this.handleChange} />
-          <button type="submit" onClick={onClose}>
-            Novo Chamado
-          </button>
+          </Select>
+          <Message placeholder="Descrição" name="description" onChange={this.handleChange} />
+          <Button type="submit" onClick={onClose}>
+            Confirmar
+          </Button>
         </Form>
       </Modal>
     );

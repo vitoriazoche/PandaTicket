@@ -6,21 +6,24 @@ export const Header = styled.div`
 `;
 export const Button = styled.button`
   padding: 20px;
-  margin: 20px;
+  margin: 30px;
   height: 58px;
   width: 200px;
   font-weight: bold;
   font-size: 18px;
   border-radius: 10px;
   border: none;
-  background-color: #2ecc71;
+  background-color: #0095ff;
   color: #fff;
   cursor: pointer;
+  border-color: #07c;
+  box-shadow: inset 0 1px 0 #66bfff;
 `;
 
 export const Image = styled.img`
-  width: 140px;
-  height: 105px;
+  width: 196px;
+  height: 130px;
+  padding: 35px;
 `;
 
 export const Table = styled.table`
@@ -34,7 +37,7 @@ export const Thead = styled.thead`
   font-weight: 100 !important;
   padding: 15px 10px;
   color: #fff;
-  background-color: #879dc1;
+  background-color: #66bfff;
 `;
 
 export const Tr = styled.tr`

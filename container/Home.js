@@ -4,7 +4,7 @@ import New from './New';
 import Edit from './Edit';
 import api from '../api';
 
-import Logo from '../img/Logo.png';
+import Logo from '../img/logo.png';
 import {
   Header, Button, Image, Table, Thead, Tr,
 } from './styles';

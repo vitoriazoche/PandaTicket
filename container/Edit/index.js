@@ -4,7 +4,12 @@
 import React from 'react';
 
 import Modal from '../../components/Modal';
+import Button from '../../components/Button';
 import api from '../../api';
+
+import {
+  Info, Label, Description, Status, Select, Form,
+} from './styles';
 
 class Edit extends React.PureComponent {
   state = { status: '' };
@@ -28,22 +33,6 @@ class Edit extends React.PureComponent {
 
   handleChange = event => this.setState({ status: event.target.value });
 
-  // handleChange = (e) => {
-  //   e.persist();
-  //   this.setState((state) => {
-  //     const nextState = {
-  //       ...state,
-  //       ticket: {
-  //         ...state.ticket,
-  //         [e.target.name]: e.target.value,
-  //       },
-  //     };
-  //     return {
-  //       ...nextState,
-  //     };
-  //   });
-  // };
-
   renderOptions = (status) => {
     const options = [
       { value: 'opened', option: 'Aberto', selected: false },
@@ -63,19 +52,25 @@ class Edit extends React.PureComponent {
   render() {
     const { onClose, isOpen, target } = this.props;
     return (
-      <Modal isOpen={isOpen} onClose={onClose} title="Editar chamado">
+      <Modal isOpen={isOpen} onClose={onClose}>
         <h2>{target.name}</h2>
-        <span>{`Solicitante: ${target.requester}`}</span>
-        <span>{`Categoria: ${target.category}`}</span>
-        <div>{`Descrição: ${target.description}`}</div>
-        <span>Status: </span>
+        <Info>
+          <Label>Solicitante: </Label>
+          {target.requester}
+        </Info>
         <br />
-        <form onSubmit={this.handleSubmit} method="post">
-          <select onChange={this.handleChange}>{this.renderOptions(target.status)}</select>
-          <button type="submit" onClick={onClose}>
+        <Info>
+          <Label>Categoria: </Label>
+          {target.category}
+        </Info>
+        <Description>{target.description}</Description>
+        <Status>Status: </Status>
+        <Form method="post" onSubmit={this.handleSubmit}>
+          <Select onChange={this.handleChange}>{this.renderOptions(target.status)}</Select>
+          <Button type="submit" onClick={onClose}>
             Concluir
-          </button>
-        </form>
+          </Button>
+        </Form>
       </Modal>
     );
   }

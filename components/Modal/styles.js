@@ -3,19 +3,26 @@ import styled from 'styled-components';
 export const Overlay = styled.div`
   display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
   position: absolute;
+  top: 0;
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const Close = styled.span`
-  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  font-weight: 800;
+  font-size: 20px;
+  top: 0;
+  right: 0;
+  color: #999;
+  padding: 10px 10px 0 0;
   cursor: pointer;
-  top: 2px;
-  left: 477px;
+  transition: .5s;
 
   &:hover {
-    color: grey;
+    color: #504fef;
   }
 `;
 
@@ -27,6 +34,9 @@ export const Wrapper = styled.div`
   top: calc(50% - 150px);
   background-color: #fff;
   position: relative;
-  height: 300px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 22px 0px rgba(0,0,0,0.75);
+  padding: 20px;
+  height: auto;
   width: 500px;
 `;
